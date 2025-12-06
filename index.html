@@ -5,27 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>えんとつ町のプペル ポスター配布マップ</title>
     <style>
-        /* ★修正点1: htmlとbodyのデフォルトマージン/パディングを完全にリセット★ */
+        /* htmlとbodyのデフォルトマージン/パディングを完全にリセット */
         html, body {
             margin: 0;
             padding: 0;
             height: 100%;
         }
         
-        /* htmlタグにグラデーションを設定し、ページ全体をカバー */
+        /* 奥側のレイヤー：htmlタグにグラデーションを設定 */
         html {
-            background: linear-gradient(to right, #FFD700, #FFFFFF); /* 左黄色、右白のグラデーション */
+            background: linear-gradient(to right, #FFD700, #FFFFFF); 
         }
         
         /* --- 基本リセットとフォント --- */
         body {
             font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
             
-            /* bodyのpaddingを削除し、コンテンツ領域を最大化 */
-            /* background-color: transparent; を徹底するため、背景色に関する指定を避ける */
+            /* bodyの背景色指定を削除し、完全に透明にする */
             
-            min-height: 100vh; /* 画面の最小高さを確保 */
-            
+            min-height: 100vh;
             color: #333;
             text-align: center;
         }
@@ -34,30 +32,14 @@
         .container {
             max-width: 960px;
             margin: 0 auto;
-            background-color:transparent;
+            /* containerの背景は引き続き白 (コンテンツの背景) */
+            background-color: #fff; 
             
-            /* ★修正点2: bodyから移動したpaddingをcontainerに適用★ */
             padding: 40px 30px; 
             
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
         }
-        
-        /* --- レスポンシブ対応 (スマホ用) --- */
-        @media (max-width: 600px) {
-            /* ★修正点3: スマホ用のpaddingをcontainerに適用★ */
-            .container { 
-                padding: 20px 15px; 
-            }
-            
-            h1 { font-size: 1.8rem; }
-            .subtitle { font-size: 1.2rem; }
-            
-            .store-list li {
-                width: 100%; 
-            }
-        }
-
 
         /* --- タイトル --- */
         h1 {
@@ -74,13 +56,23 @@
             margin-bottom: 40px;
             font-weight: 500;
         }
+        
+        /* ★追加: 応援メッセージのスタイル★ */
+        .support-message {
+            font-size: 1.5rem; /* サブタイトルと同じサイズ */
+            color: #555;      /* 控えめな色 */
+            margin-top: -20px; /* マップとリストの間のスペースを調整 */
+            margin-bottom: 40px;
+            line-height: 1.6;
+            text-align: center;
+        }
 
         /* --- マップセクション --- */
         .map-section {
             position: relative;
             max-width: 100%; 
             display: inline-block;
-            margin-bottom: 40px;
+            margin-bottom: 40px; /* このmarginは不要になるため、次の.support-messageで調整 */
             border: 1px solid #ddd;
             padding: 10px;
             background-color: #f9f9f9;
@@ -129,6 +121,24 @@
             background-color: #f0f0f0; 
         }
 
+        /* --- レスポンシブ対応 (スマホ用) --- */
+        @media (max-width: 600px) {
+            .container { 
+                padding: 20px 15px; 
+            }
+            
+            h1 { font-size: 1.8rem; }
+            .subtitle { font-size: 1.2rem; }
+            
+            .store-list li {
+                width: 100%; 
+            }
+            
+            /* スマホでのメッセージサイズ調整 */
+            .support-message {
+                font-size: 1.2rem; 
+            }
+        }
     </style>
 </head>
 <body>
@@ -140,6 +150,11 @@
         <div class="map-section">
             <img src="japan map4.png" alt="日本地図">
         </div>
+        
+        <p class="support-message">
+            本プロジェクトは映画えんとつ町のプペル-約束の時計台-を応援する同志が集い運営しております。お問い合わせは下記までご連絡ください。<br>
+            ※株式会社CHIMNEY TOWNへのお問合せはなさらぬようお願い申し上げます。
+        </p>
 
         <div class="store-list-section">
             <h2>ポスター配布先店舗一覧</h2>
