@@ -5,15 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>えんとつ町のプペル ポスター配布マップ</title>
     <style>
+        /* ★修正点1: htmlとbodyのデフォルトマージン/パディングを完全にリセット★ */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        
+        /* htmlタグにグラデーションを設定し、ページ全体をカバー */
+        html {
+            background: linear-gradient(to right, #FFD700, #FFFFFF); /* 左黄色、右白のグラデーション */
+        }
+        
         /* --- 基本リセットとフォント --- */
         body {
             font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
-            margin: 0;
-            padding: 40px 20px;
             
-            /* ★修正点: グラデーションの方向を「上から下へ」に変更★ */
-            background: linear-gradient(to bottom, #FFD700, #FFFFCC); 
-            background-color: #f7f7f7; 
+            /* bodyのpaddingを削除し、コンテンツ領域を最大化 */
+            /* background-color: transparent; を徹底するため、背景色に関する指定を避ける */
+            
+            min-height: 100vh; /* 画面の最小高さを確保 */
             
             color: #333;
             text-align: center;
@@ -24,10 +35,29 @@
             max-width: 960px;
             margin: 0 auto;
             background-color: #fff;
-            padding: 40px 30px;
+            
+            /* ★修正点2: bodyから移動したpaddingをcontainerに適用★ */
+            padding: 40px 30px; 
+            
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
         }
+        
+        /* --- レスポンシブ対応 (スマホ用) --- */
+        @media (max-width: 600px) {
+            /* ★修正点3: スマホ用のpaddingをcontainerに適用★ */
+            .container { 
+                padding: 20px 15px; 
+            }
+            
+            h1 { font-size: 1.8rem; }
+            .subtitle { font-size: 1.2rem; }
+            
+            .store-list li {
+                width: 100%; 
+            }
+        }
+
 
         /* --- タイトル --- */
         h1 {
@@ -99,20 +129,6 @@
             background-color: #f0f0f0; 
         }
 
-        /* --- レスポンシブ対応 (スマホ用) --- */
-        @media (max-width: 600px) {
-            body { padding: 20px 10px; }
-            .container { 
-                padding: 20px 15px; 
-            }
-            
-            h1 { font-size: 1.8rem; }
-            .subtitle { font-size: 1.2rem; }
-            
-            .store-list li {
-                width: 100%; 
-            }
-        }
     </style>
 </head>
 <body>
