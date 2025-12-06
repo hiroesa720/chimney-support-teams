@@ -5,26 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>えんとつ町のプペル ポスター配布マップ</title>
     <style>
-        /* htmlとbodyのデフォルトマージン/パディングを完全にリセット */
+        /* ★修正点1: htmlとbodyのデフォルトマージン/パディングを完全にリセット★ */
         html, body {
             margin: 0;
             padding: 0;
             height: 100%;
         }
         
-        /* 奥側のレイヤー：htmlタグにグラデーションを設定 */
+        /* htmlタグにグラデーションを設定し、ページ全体をカバー */
         html {
-            background: linear-gradient(to right, #FFD700, #FFFFFF); 
+            background: linear-gradient(to right, #FFD700, #FFFFFF); /* 左黄色、右白のグラデーション */
         }
         
         /* --- 基本リセットとフォント --- */
         body {
             font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
             
-            /* ★修正点: bodyの背景を青に変更し、領域を確認する★ */
-            background-color: #00BFFF; 
+            /* bodyのpaddingを削除し、コンテンツ領域を最大化 */
+            /* background-color: transparent; を徹底するため、背景色に関する指定を避ける */
             
-            min-height: 100vh;
+            min-height: 100vh; /* 画面の最小高さを確保 */
+            
             color: #333;
             text-align: center;
         }
@@ -33,14 +34,30 @@
         .container {
             max-width: 960px;
             margin: 0 auto;
-            /* containerの背景は引き続き白 */
-            background-color: #fff; 
+            background-color:transparent;
             
+            /* ★修正点2: bodyから移動したpaddingをcontainerに適用★ */
             padding: 40px 30px; 
             
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
         }
+        
+        /* --- レスポンシブ対応 (スマホ用) --- */
+        @media (max-width: 600px) {
+            /* ★修正点3: スマホ用のpaddingをcontainerに適用★ */
+            .container { 
+                padding: 20px 15px; 
+            }
+            
+            h1 { font-size: 1.8rem; }
+            .subtitle { font-size: 1.2rem; }
+            
+            .store-list li {
+                width: 100%; 
+            }
+        }
+
 
         /* --- タイトル --- */
         h1 {
@@ -112,28 +129,69 @@
             background-color: #f0f0f0; 
         }
 
-        /* --- レスポンシブ対応 (スマホ用) --- */
-        @media (max-width: 600px) {
-            .container { 
-                padding: 20px 15px; 
-            }
-            
-            h1 { font-size: 1.8rem; }
-            .subtitle { font-size: 1.2rem; }
-            
-            .store-list li {
-                width: 100%; 
-            }
-        }
     </style>
 </head>
 <body>
 
     <div class="container">
+        <h1>えんとつ町のプペル 〜約束の時計台〜</h1>
+        <p class="subtitle">ポスター配布マップ</p>
+
+        <div class="map-section">
+            <img src="japan map2.png" alt="日本地図">
         </div>
 
+        <div class="store-list-section">
+            <h2>ポスター配布先店舗一覧</h2>
+            <ul class="store-list">
+                <li data-url="sapporo-yume">北海道/札幌市 夢を売る店</li>
+                <li data-url="sendai-clock">宮城県/仙台市 約束の時計台カフェ</li>
+                <li data-url="tokyo-shibuya">東京都/渋谷区 プペル書店</li>
+                <li data-url="tokyo-sumida">東京都/墨田区 ルビッチの工房</li>
+                <li data-url="kanagawa-yokohama">神奈川県/横浜市 ヒロインの洋菓子店</li>
+                <li data-url="aichi-nagoya">愛知県/名古屋市 スコップの工具店</li>
+                <li data-url="osaka-umeda">大阪府/梅田 キンコン西野事務所</li>
+                <li data-url="osaka-namba">大阪府/難波 アントニオのBAR</li>
+                <li data-url="hiroshima-fukuyama">広島県/福山市 煙突掃除屋の店</li>
+                <li data-url="fukuoka-hakata">福岡県/博多区 光る絵本カフェ</li>
+                <li data-url="okinawa-naha">沖縄県/那覇市 最高の友達の家</li>
+            </ul>
+        </div>
+    </div>
+
     <script>
-        // ... (JavaScriptコードは省略)
+        // 店舗リストの目印（data-urlの値）と対応するURLをここで定義します
+        // **【重要：URL編集ポイント】**：必ず実際の店舗のウェブサイトURLに置き換えてください
+        const storeUrls = {
+            'sapporo-yume': 'https://example.com/store/sapporo-yume',
+            'sendai-clock': 'https://example.com/store/sendai-clock',
+            'tokyo-shibuya': 'https://example.com/store/tokyo-shibuya',
+            'tokyo-sumida': 'https://example.com/store/tokyo-sumida',
+            'kanagawa-yokohama': 'https://example.com/store/kanagawa-yokohama',
+            'aichi-nagoya': 'https://example.com/store/aichi-nagoya',
+            'osaka-umeda': 'https://example.com/store/osaka-umeda',
+            'osaka-namba': 'https://example.com/store/osaka-namba',
+            'hiroshima-fukuyama': 'https://example.com/store/hiroshima-fukuyama',
+            'fukuoka-hakata': 'https://example.com/store/fukuoka-hakata',
+            'okinawa-naha': 'https://example.com/store/okinawa-naha'
+        };
+
+        // 各リスト項目にクリックイベントを設定する処理
+        document.addEventListener('DOMContentLoaded', () => {
+            const listItems = document.querySelectorAll('.store-list li');
+
+            listItems.forEach(item => {
+                const urlKey = item.getAttribute('data-url');
+                const url = storeUrls[urlKey];
+
+                if (url) {
+                    item.addEventListener('click', () => {
+                        // クリックしたら新しいタブでURLを開く
+                        window.open(url, '_blank');
+                    });
+                }
+            });
+        });
     </script>
     
 </body>
