@@ -66,6 +66,13 @@
             line-height: 1.6;
             text-align: center;
         }
+        
+        /* メールアドレスのリンク色を調整 */
+        .support-message a {
+            color: #004c99;
+            font-weight: bold;
+            text-decoration: none;
+        }
 
         /* --- マップセクション --- */
         .map-section {
@@ -153,9 +160,10 @@
         
         <p class="support-message">
             本プロジェクトは映画えんとつ町のプペル-約束の時計台-を応援する同志が集い運営しております。
-            <br> お問い合わせは下記までご連絡ください。
             <br>
-            **poupellefanteam@gmail.com**
+            お問い合わせは下記までご連絡ください。
+            <br>
+            <a href="mailto:poupellefanteam@gmail.com">**poupellefanteam@gmail.com**</a>
             <br>
             ※株式会社CHIMNEY TOWNへのお問合せはなさらぬようお願い申し上げます。
         </p>
@@ -163,7 +171,7 @@
         <div class="store-list-section">
             <h2>ポスター配布先店舗一覧</h2>
             <ul class="store-list">
-                <li data-url="https://maps.app.goo.gl/CxQ1i7tanZLoJRV5A">北海道/恵庭市 ラーメン華門</li>
+                <li data-url="hokkaido-ramen">北海道/恵庭市 ラーメン華門</li>
                 <li data-url="sendai-clock">宮城県/仙台市 約束の時計台カフェ</li>
                 <li data-url="tokyo-shibuya">東京都/渋谷区 プペル書店</li>
                 <li data-url="tokyo-sumida">東京都/墨田区 ルビッチの工房</li>
@@ -182,7 +190,8 @@
         // 店舗リストの目印（data-urlの値）と対応するURLをここで定義します
         // **【重要：URL編集ポイント】**：必ず実際の店舗のウェブサイトURLに置き換えてください
         const storeUrls = {
-            'sapporo-yume': 'https://example.com/store/sapporo-yume',
+            // ★修正点2: 最初の項目を新しいキーで置き換えました。実際のURLをここに貼り付けてください。★
+            'hokkaido-ramen': 'https://maps.app.goo.gl/CxQ1i7tanZLoJRV5A', 
             'sendai-clock': 'https://example.com/store/sendai-clock',
             'tokyo-shibuya': 'https://example.com/store/tokyo-shibuya',
             'tokyo-sumida': 'https://example.com/store/tokyo-sumida',
@@ -203,7 +212,7 @@
                 const urlKey = item.getAttribute('data-url');
                 const url = storeUrls[urlKey];
 
-                if (url) {
+                if (url && url !== 'https://[ラーメン華門の実際のGoogleマップURL]') {
                     item.addEventListener('click', () => {
                         // クリックしたら新しいタブでURLを開く
                         window.open(url, '_blank');
