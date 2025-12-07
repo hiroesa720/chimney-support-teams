@@ -73,6 +73,14 @@
             font-weight: bold;
             text-decoration: none;
         }
+        
+        /* ★追加：注意書きの文字サイズを小さくするスタイル★ */
+        .support-message .small-note {
+            font-size: 0.8rem; 
+            display: block;
+            margin-top: 5px;
+        }
+        /* ------------------------------------------- */
 
         /* --- マップセクション --- */
         .map-section {
@@ -145,6 +153,11 @@
             .support-message {
                 font-size: 1.2rem; 
             }
+            
+            /* スマホでの注意書きサイズ調整 */
+            .support-message .small-note {
+                 font-size: 0.9rem; 
+            }
         }
     </style>
 </head>
@@ -163,9 +176,9 @@
             <br>
             お問い合わせは下記までご連絡ください。
             <br>
-            <a href="mailto:poupellefanteam@gmail.com">**poupellefanteam@gmail.com**</a>
+            <a href="mailto:poupellefanteam@gmail.com">poupellefanteam@gmail.com</a>
             <br>
-            ※本件に関して株式会社CHIMNEY TOWNへのお問合せはなさらぬようお願い申し上げます。
+            <span class="small-note">※本件に関して株式会社CHIMNEY TOWNへのお問合せはなさらぬようお願い申し上げます。</span>
         </p>
 
         <div class="store-list-section">
@@ -206,7 +219,7 @@
         // 店舗リストの目印（data-urlの値）と対応するURLをここで定義します
         // URLが[URL不明]の箇所は、後で正しいURLに置き換えてください。
         const storeUrls = {
-            'hokkaido-ramen-kamon': 'https://maps.app.goo.gl/gPd9f1HwToDfwuoQ8', 
+            'hokkaido-ramen-kamon': 'https://maps.app.goo.gl/gPd9f1HwToDfwuoQ8', ',
             'aomori-hirosaki-candy': 'https://[URL不明]', // URLが記載されていませんでした
             'aomori-takkocafe-1': 'https://maps.app.goo.gl/6hBn8DNepzqRRt2M9青森県八戸市いずみ塾',
             'aomori-takkocafe-2': 'https://maps.app.goo.gl/DPrUEueJEcJXaLMq9',
@@ -223,7 +236,7 @@
             'kyoto-haishasan': 'https://maps.app.goo.gl/HWdkZZyS9AQgPvHc8',
             'kyoto-gyutan-en': 'https://maps.app.goo.gl/oqcwgURfheDTZRs37',
             'nara-yamatokoriyama-unknown': 'https://maps.app.goo.gl/ocK1TTe4uEpfCoqo8',
-            'osaka-barbershop-b-bond': 'maps.app.goo.gl/rPB1UEEMXsZWUKEA8', // URL修正済み
+            'osaka-barbershop-b-bond': 'maps.app.goo.gl/rPB1UEEMXsZWUKEA8', 
             'osaka-sakueba': 'https://maps.app.goo.gl/eAYfGUoRdMDtzDa87',
             'osaka-higashiosaka-hidamari': 'https://maps.app.goo.gl/6bsa89CiPwXhotnP8',
             'osaka-kuromon-culture': 'https://maps.app.goo.gl/zwVi9Fq9X3Pa2KmC8',
