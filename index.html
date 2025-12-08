@@ -21,8 +21,6 @@
         body {
             font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
             
-            /* bodyの背景色指定を削除し、完全に透明にする (グラデーションを透けさせる) */
-            
             min-height: 100vh;
             color: #333;
             text-align: center;
@@ -32,28 +30,25 @@
         .container {
             max-width: 960px;
             margin: 0 auto;
-            /* 背景を透明にし、グラデーションを透けさせる */
             background-color: transparent; 
-            
             padding: 40px 30px; 
-            
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
         }
 
-        /* --- タイトル画像 --- */
+        /* --- タイトル画像 (修正箇所) --- */
         .header-image {
-            margin-bottom: 30px; /* タイトル画像の下にスペースを確保 */
+            margin-bottom: 30px; 
         }
 
         .header-image img {
-            max-width: 100%;
+            max-width: 80%; /* 親要素の80%まで広がるように設定 */
             height: auto;
             display: block;
-            margin: 0 auto; /* 画像を中央に配置 */
+            margin: 0 auto; 
+            /* max-width: 600px;  もしPCで最大サイズを制限したい場合はコメントを外してください */
         }
         
-        /* --- 以前のタイトル/サブタイトルスタイルは削除 --- */
         /* --- 応援メッセージのスタイル --- */
         .support-message {
             font-size: 1rem; 
@@ -73,9 +68,9 @@
         
         /* ★注意書きのサイズ調整★ */
         .small-note {
-            font-size: 0.8rem; /* 基本サイズ (1rem) より小さく設定 */
-            display: block; /* 常に新しい行に表示させる */
-            margin-top: 5px; /* 上のメールアドレスとの間隔を少し開ける */
+            font-size: 0.8rem; 
+            display: block; 
+            margin-top: 5px; 
         }
 
         /* --- マップセクション --- */
@@ -114,7 +109,7 @@
         .prefecture-header {
             font-size: 1.3rem;
             color: #004c99;
-            background-color: #e6f0ff; /* 薄い青の背景 */
+            background-color: #e6f0ff; 
             padding: 10px 15px;
             margin-top: 15px;
             margin-bottom: 0;
@@ -125,7 +120,7 @@
             justify-content: space-between;
             align-items: center;
             transition: background-color 0.2s;
-            user-select: none; /* テキスト選択を無効化 */
+            user-select: none; 
         }
         
         .prefecture-header:hover {
@@ -134,7 +129,7 @@
         
         /* 開閉インジケーター (矢印) */
         .prefecture-header::after {
-            content: '▼'; /* 閉じた状態の矢印 */
+            content: '▼'; 
             font-size: 0.8em;
             transition: transform 0.2s;
         }
@@ -146,7 +141,7 @@
         
         /* ★アコーディオンコンテンツ (リスト) のスタイル★ */
         .store-group {
-            display: none; /* デフォルトで非表示 */
+            display: none; 
             padding: 15px 0 5px;
             border-left: 1px solid #ccc;
             border-right: 1px solid #ccc;
@@ -335,7 +330,6 @@
             // 1. アコーディオン機能のロジック
             prefectureHeaders.forEach(header => {
                 header.addEventListener('click', () => {
-                    // クリックしたヘッダーの直後にある店舗グループを取得
                     const group = header.nextElementSibling;
                     
                     // 開閉状態をトグル
@@ -358,7 +352,6 @@
                 // URLが存在し、かつダミーの「https://[URL不明]」でない場合のみクリックイベントを設定
                 if (url && url !== 'https://[URL不明]') {
                     item.addEventListener('click', () => {
-                        // クリックしたら新しいタブでURLを開く
                         window.open(url, '_blank');
                     });
                 }
