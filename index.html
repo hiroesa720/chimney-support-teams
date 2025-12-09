@@ -36,17 +36,16 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
         }
 
-        /* --- タイトル画像 (修正箇所) --- */
+        /* --- タイトル画像 --- */
         .header-image {
             margin-bottom: 30px; 
         }
 
         .header-image img {
-            max-width: 100%; /* 親要素の100%に修正 */
+            max-width: 100%; /* 100%を維持 */
             height: auto;
             display: block;
             margin: 0 auto; 
-            /* max-width: 600px;  もしPCで最大サイズを制限したい場合はコメントを外してください */
         }
         
         /* --- 応援メッセージのスタイル --- */
@@ -181,7 +180,7 @@
             
             /* スマホでのメッセージサイズ調整 */
             .support-message {
-                font-size: 1.2rem; 
+                font-size: 1rem; /* 1.2remから1remに戻しました */
             }
             /* スマホでの注意書きサイズ調整 */
             .small-note {
@@ -190,6 +189,10 @@
             
             .prefecture-header {
                 font-size: 1.1rem;
+            }
+
+            .store-list li {
+                width: 100%; /* スマホではリストを1列にします */
             }
         }
     </style>
