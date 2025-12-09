@@ -42,7 +42,7 @@
         }
 
         .header-image img {
-            max-width: 100%; /* 100%を維持 */
+            max-width: 100%;
             height: auto;
             display: block;
             margin: 0 auto; 
@@ -293,9 +293,8 @@
 
     <script>
         // 店舗リストの目印（data-urlの値）と対応するURLをここで定義します
-        // 🚨【重要】URLはまだダミーです。正しいURLに置き換える必要があります。
         const storeUrls = {
-            'hokkaido-ramen-kamon': 'https://maps.app.goo.gl/gPd9f1HwToDfwuoQ8', ', // 修正済み
+            'hokkaido-ramen-kamon': 'https://maps.app.goo.gl/gPd9f1HwToDfwuoQ8', ',
             'aomori-hirosaki-candy': 'https://[URL不明]', 
             'aomori-takkocafe-1': 'https://maps.app.goo.gl/6hBn8DNepzqRRt2M9青森県八戸市いずみ塾',
             'aomori-takkocafe-2': 'https://maps.app.goo.gl/DPrUEueJEcJXaLMq9',
@@ -312,7 +311,7 @@
             'kyoto-haishasan': 'https://maps.app.goo.gl/HWdkZZyS9AQgPvHc8',
             'kyoto-gyutan-en': 'https://maps.app.goo.gl/oqcwgURfheDTZRs37',
             'nara-yamatokoriyama-unknown': 'https://maps.app.goo.gl/ocK1TTe4uEpfCoqo8',
-            'osaka-barbershop-b-bond': 'maps.app.goo.gl/rPB1UEEMXsZWUKEA8', ', // 修正済み
+            'osaka-barbershop-b-bond': 'maps.app.goo.gl/rPB1UEEMXsZWUKEA8', ',
             'osaka-sakueba': 'https://maps.app.goo.gl/eAYfGUoRdMDtzDa87',
             'osaka-higashiosaka-hidamari': 'https://maps.app.goo.gl/6bsa89CiPwXhotnP8',
             'osaka-kuromon-culture': 'https://maps.app.goo.gl/zwVi9Fq9X3Pa2KmC8',
@@ -325,23 +324,29 @@
             'hyogo-eigo-juku': 'https://maps.app.goo.gl/XbgdoBBmuNkYU8MG7?g_st=ipc'
         };
 
-        // 各リスト項目にクリックイベントを設定する処理
+        // DOMContentLoadedイベントで確実に要素を取得し、リスナーを設定します。
         document.addEventListener('DOMContentLoaded', () => {
             const listItems = document.querySelectorAll('.store-list li');
             const prefectureHeaders = document.querySelectorAll('.prefecture-header');
 
             // 1. アコーディオン機能のロジック
             prefectureHeaders.forEach(header => {
-                header.addEventListener('click', () => {
+                header.addEventListener('click', (e) => {
+                    // クリックイベントが他の要素に伝播するのを防ぐ
+                    e.stopPropagation(); 
+                    
                     const group = header.nextElementSibling;
                     
-                    // 開閉状態をトグル
-                    if (group.style.display === 'block') {
-                        group.style.display = 'none';
-                        header.classList.remove('open');
-                    } else {
-                        group.style.display = 'block';
-                        header.classList.add('open');
+                    // 開閉状態をトグル (CSSのdisplayプロパティを直接操作)
+                    if (group && group.classList.contains('store-group')) {
+                        if (group.style.display === 'block') {
+                            group.style.display = 'none';
+                            header.classList.remove('open');
+                        } else {
+                            // 確実に開く
+                            group.style.display = 'block';
+                            header.classList.add('open');
+                        }
                     }
                 });
             });
