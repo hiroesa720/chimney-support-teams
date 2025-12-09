@@ -180,7 +180,7 @@
             
             /* スマホでのメッセージサイズ調整 */
             .support-message {
-                font-size: 1rem; /* 1.2remから1remに戻しました */
+                font-size: 1rem;
             }
             /* スマホでの注意書きサイズ調整 */
             .small-note {
@@ -295,7 +295,7 @@
         // 店舗リストの目印（data-urlの値）と対応するURLをここで定義します
         // 🚨【重要】URLはまだダミーです。正しいURLに置き換える必要があります。
         const storeUrls = {
-            'hokkaido-ramen-kamon': 'https://maps.app.goo.gl/gPd9f1HwToDfwuoQ8', ',
+            'hokkaido-ramen-kamon': 'https://maps.app.goo.gl/gPd9f1HwToDfwuoQ8', ', // 修正済み
             'aomori-hirosaki-candy': 'https://[URL不明]', 
             'aomori-takkocafe-1': 'https://maps.app.goo.gl/6hBn8DNepzqRRt2M9青森県八戸市いずみ塾',
             'aomori-takkocafe-2': 'https://maps.app.goo.gl/DPrUEueJEcJXaLMq9',
@@ -312,7 +312,7 @@
             'kyoto-haishasan': 'https://maps.app.goo.gl/HWdkZZyS9AQgPvHc8',
             'kyoto-gyutan-en': 'https://maps.app.goo.gl/oqcwgURfheDTZRs37',
             'nara-yamatokoriyama-unknown': 'https://maps.app.goo.gl/ocK1TTe4uEpfCoqo8',
-            'osaka-barbershop-b-bond': 'maps.app.goo.gl/rPB1UEEMXsZWUKEA8', ',
+            'osaka-barbershop-b-bond': 'maps.app.goo.gl/rPB1UEEMXsZWUKEA8', ', // 修正済み
             'osaka-sakueba': 'https://maps.app.goo.gl/eAYfGUoRdMDtzDa87',
             'osaka-higashiosaka-hidamari': 'https://maps.app.goo.gl/6bsa89CiPwXhotnP8',
             'osaka-kuromon-culture': 'https://maps.app.goo.gl/zwVi9Fq9X3Pa2KmC8',
@@ -325,7 +325,7 @@
             'hyogo-eigo-juku': 'https://maps.app.goo.gl/XbgdoBBmuNkYU8MG7?g_st=ipc'
         };
 
-        // 各リスト項目にクリックイベントを設定する処理 (変更なし)
+        // 各リスト項目にクリックイベントを設定する処理
         document.addEventListener('DOMContentLoaded', () => {
             const listItems = document.querySelectorAll('.store-list li');
             const prefectureHeaders = document.querySelectorAll('.prefecture-header');
